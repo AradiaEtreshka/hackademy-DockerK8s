@@ -2,9 +2,8 @@
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
-![Security](https://img.shields.io/badge/Security-Hardened-green?style=for-the-badge)
 
-**Proyecto Final - Arquitectura de Contenedores y Orquestación.**
+**Entrega Final - Hackademy - Docker & Kubernetes Security**
 Este repositorio contiene la implementación de una arquitectura (Frontend, Backend, Database) segura, migrada de un entorno local (Docker Compose) a producción (Kubernetes).
 
 ---
