@@ -47,10 +47,9 @@ docker-compose down
 ---
 
 ## ☸️ Opción B: Despliegue en Kubernetes (Producción)
-Despliegue utilizando Manifiestos (`/k8s`) .
+Despliegue utilizando Manifiestos (`/k8s`).
 
 1. **Aplicar configuración al cluster:**
-   ```bash
    kubectl apply -f k8s/
 
 2. **Verificar estado de los Pods**
