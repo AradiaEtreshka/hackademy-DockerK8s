@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: hackademy-k8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: aradiaetreshka/backend:v2
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: database
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: hackademy-k8s
+spec:
+  selector:
+    app: backend
+  ports:
+# ------------------------------------------------------------------------
+    # CONFIGURACIÓN ANTERIOR (Modo Testing)
+    # Exponía el Backend.
+    # Riesgo de Seguridad
+    # - protocol: TCP
+    #   port: 8081       
+    #   targetPort: 8080 
+    # type: LoadBalancer (IP Pública)
+# ------------------------------------------------------------------------
+    # NUEVA CONFIGURACIÓN 
+    # El Backend es invisible desde fuera del cluster
+    # Solo el Frontend accede
+
+    - protocol: TCP
+      port: 80         
+      targetPort: 8080 
+  type: ClusterIP     

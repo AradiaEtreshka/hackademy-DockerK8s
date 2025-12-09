@@ -1,0 +1,46 @@
+services:
+  # db
+  database:
+    image: aradiaetreshka/database:v2
+    container_name: hackademy-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB_NAME}
+    ports:
+      - "3306:3306"
+    networks:
+      - hacklayer-net
+    volumes:
+      - db_data:/var/lib/mysql
+
+  # back
+  backend:
+    image: aradiaetreshka/backend:v1
+    container_name: hackademy-back
+    restart: always
+    ports:
+      - "8081:8080"
+    networks:
+      - hacklayer-net
+    depends_on:
+      - database
+
+  # front
+  frontend:
+    image: aradiaetreshka/frontend:v2
+    container_name: hackademy-front
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - hacklayer-net
+    depends_on:
+      - backend
+
+networks:
+  hacklayer-net:
+    driver: bridge
+
+volumes:
+  db_data:
