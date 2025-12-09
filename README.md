@@ -9,7 +9,7 @@ Este repositorio contiene la implementación de una arquitectura (Frontend, Back
 ---
 
 ## 📋 Prerrequisitos
-Para ejecutar este proyecto correctamente, asegúrate de tener instalado:
+Para ejecutar este proyecto, tener instalado:
 
 1. **Docker Engine & Docker Compose:** Incluido en Docker Desktop.
 2. **Kubernetes Cluster:** Habilitar la opción "Enable Kubernetes" en Docker Desktop (o usar Minikube/Kind).
@@ -19,7 +19,6 @@ Para ejecutar este proyecto correctamente, asegúrate de tener instalado:
 ---
 
 ## 🛠️ Instalación
-Abre tu terminal y clona este repositorio:
 
 ```bash
 git clone [https://github.com/AradiaEtreshka/hackademy-DockerK8s.git]
