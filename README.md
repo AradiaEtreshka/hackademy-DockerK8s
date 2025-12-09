@@ -23,13 +23,13 @@ Para ejecutar este proyecto correctamente, asegúrate de tener instalado:
 Abre tu terminal y clona este repositorio:
 
 ```bash
-git clone [https://github.com/AradiaEtreshka/hackademy-DockerK8s.git](https://github.com/AradiaEtreshka/hackademy-DockerK8s.git)
+git clone [https://github.com/AradiaEtreshka/hackademy-DockerK8s.git]
 cd hackademy-DockerK8s
 
 ---
 
 ## 🚀 Opción A: Ejecución Local (Docker Compose)
-Utiliza esta opción para levantar el entorno rápidamente en tu PC (Entorno de Desarrollo).
+Opción para levantar el entorno en PC (Entorno de Desarrollo).
 
 1. **Iniciar los servicios:**
 docker-compose up -d
@@ -47,7 +47,7 @@ docker-compose down
 ---
 
 ## ☸️ Opción B: Despliegue en Kubernetes (Producción)
-Despliegue robusto utilizando Manifiestos (`/k8s`) con segmentación de red y secretos.
+Despliegue utilizando Manifiestos (`/k8s`) .
 
 1. **Aplicar configuración al cluster:**
    ```bash
@@ -58,9 +58,10 @@ kubectl get all -n hackademy-k8s
 
 3. **Acceder a la aplicación**
 
-Frontend (Público): http://localhost:8080 (Servicio LoadBalancer expuesto).
+    Frontend (Público): http://localhost:8080 (Servicio LoadBalancer expuesto).
 
-Backend (Privado): Configurado como ClusterIP para máxima seguridad. No es accesible directamente desde internet.
+    Backend (Privado): Configurado como ClusterIP para máxima seguridad. No es accesible directamente desde internet.
+    
 Dado que la API es privada se debe establecer un tunel administrativo temporal:
 
     kubectl port-forward -n hackademy-k8s svc/backend 8081:80
