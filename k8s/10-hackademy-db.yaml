@@ -1,3 +1,20 @@
+# Por lo efimero de los datos una vez finalizados los preocesos de los cluster, 
+# decidi hacer otro yaml con persistencia para los logs para futuras auditorias. 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+  namespace: hackademy-k8s
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi  # espacio para guardar los logs
+
+---
+#  el deploy de la bd
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,8 +43,18 @@ spec:
                   key: mysql-root-password
             - name: MYSQL_DATABASE
               value: hackademy
+# conexion para asignar donde se montara el storage de los logs
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+# el disco a usar
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
 
 ---
+#el servicio
 apiVersion: v1
 kind: Service
 metadata:
@@ -40,4 +67,53 @@ spec:
     - protocol: TCP
       port: 3306
       targetPort: 3306
-  type: ClusterIP 
+  type: ClusterIP
+
+
+#  ----------------------------------------------------------------
+
+# Antiguo Yaml sin persistencia"
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: database
+#   namespace: hackademy-k8s
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: database
+#   template:
+#     metadata:
+#       labels:
+#         app: database
+#     spec:
+#       containers:
+#         - name: mysql
+#           image: aradiaetreshka/database:v2
+#           ports:
+#             - containerPort: 3306
+#           env:
+#             - name: MYSQL_ROOT_PASSWORD
+#               valueFrom:
+#                 secretKeyRef:
+#                   name: db-credentials
+#                   key: mysql-root-password
+#             - name: MYSQL_DATABASE
+#               value: hackademy
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: database
+#   namespace: hackademy-k8s
+# spec:
+#   selector:
+#     app: database
+#   ports:
+#     - protocol: TCP
+#       port: 3306
+#       targetPort: 3306
+#   type: ClusterIP 
