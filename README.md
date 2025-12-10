@@ -21,7 +21,7 @@ Para ejecutar este proyecto, tener instalado:
 ## 🛠️ Instalación
 
 ```bash
-git clone [https://github.com/AradiaEtreshka/hackademy-DockerK8s.git]
+git clone https://github.com/AradiaEtreshka/hackademy-DockerK8s.git
 cd hackademy-DockerK8s
 
 ---
@@ -53,7 +53,11 @@ Despliegue utilizando Manifiestos (`/k8s`).
 2. **Verificar estado de los Pods**
 kubectl get all -n hackademy-k8s
 
-3. **Acceder a la aplicación**
+3. **Verificar persistencia de datos
+kubectl get pvc -n hackademy-k8s
+(El estado debe ser Bound)
+
+4. **Acceder a la aplicación**
 
     Frontend (Público): http://localhost:8080 (Servicio LoadBalancer expuesto).
 
