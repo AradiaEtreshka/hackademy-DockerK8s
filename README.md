@@ -1,16 +1,15 @@
-# 🛡️ Hackademy: Docker y K8s
+# 🛡️ Hackademy: Docker & Kubernetes Security
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
-![Security](https://img.shields.io/badge/Security-Hardened-green?style=for-the-badge)
 
-**Proyecto Final - Arquitectura de Contenedores y Orquestación.**
+**Entrega Final - Hackademy - Docker & Kubernetes Security**
 Este repositorio contiene la implementación de una arquitectura (Frontend, Backend, Database) segura, migrada de un entorno local (Docker Compose) a producción (Kubernetes).
 
 ---
 
 ## 📋 Prerrequisitos
-Para ejecutar este proyecto correctamente, asegúrate de tener instalado:
+Para ejecutar este proyecto, tener instalado:
 
 1. **Docker Engine & Docker Compose:** Incluido en Docker Desktop.
 2. **Kubernetes Cluster:** Habilitar la opción "Enable Kubernetes" en Docker Desktop (o usar Minikube/Kind).
@@ -20,7 +19,6 @@ Para ejecutar este proyecto correctamente, asegúrate de tener instalado:
 ---
 
 ## 🛠️ Instalación
-Abre tu terminal y clona este repositorio:
 
 ```bash
 git clone [https://github.com/AradiaEtreshka/hackademy-DockerK8s.git]
@@ -47,10 +45,9 @@ docker-compose down
 ---
 
 ## ☸️ Opción B: Despliegue en Kubernetes (Producción)
-Despliegue utilizando Manifiestos (`/k8s`) .
+Despliegue utilizando Manifiestos (`/k8s`).
 
 1. **Aplicar configuración al cluster:**
-   ```bash
    kubectl apply -f k8s/
 
 2. **Verificar estado de los Pods**
